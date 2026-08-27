@@ -6,6 +6,7 @@ import { askTrainer, getApiKey } from '../lib/api.js'
 import { speak, stopSpeaking } from '../lib/speech.js'
 import { addLogEntry } from '../lib/store.js'
 import RiskGauge from '../components/RiskGauge.jsx'
+import SafetyScene3D from '../components/SafetyScene3D.jsx'
 import { useLanguage } from '../context/LanguageContext.jsx'
 import { langName } from '../lib/i18n.js'
 
@@ -105,7 +106,7 @@ export default function Scenario() {
       <p className="font-mono text-amber text-xs tracking-[0.2em] uppercase mb-3">
         {scenario.sector} · {t('sc_decision')} {stepIndex + 1} {t('sc_of')} {scenario.steps.length}
       </p>
-      <h1 className="font-display font-bold text-3xl uppercase mb-6">{scenario.title}</h1>
+      <h1 className="font-display font-bold text-3xl uppercase mb-6">{scenario.title}</h1><SafetyScene3D scenarioId={scenario.id} />
 
       {stepIndex === 0 && !feedback && (
         <p className="text-concrete mb-8 leading-relaxed border-l-2 border-amber pl-4">{scenario.intro}</p>
